@@ -29,6 +29,7 @@ import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.PutDataMapRequest;
@@ -170,13 +171,13 @@ public class SunshineSyncTask {
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), weatherImageId);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] imageArray = stream.toByteArray();
+        Asset asset = Asset.createFromBytes(stream.toByteArray());
 
         PutDataMapRequest request = PutDataMapRequest.create(context.getString(R.string.sunshine_wear_data_path));
         DataMap map = request.getDataMap();
         map.putString(context.getString(R.string.high_temp_wear_string), String.valueOf(Math.round(maxTemp)));
         map.putString(context.getString(R.string.low_temp_wear_string), String.valueOf(Math.round(minTemp)));
-        map.putByteArray(context.getString(R.string.weather_icon_array_string), imageArray);
+        map.putAsset(context.getString(R.string.weather_icon_asset_string), asset);
         map.putLong(context.getString(R.string.time_stamp_string), System.currentTimeMillis());
         map.putBoolean(context.getString(R.string.set_refresh_bool_string), false);
 

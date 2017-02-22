@@ -7,7 +7,7 @@
     <string name="sunshine_weather_update_path">/sunshine_weather_update</string>
     <string name="high_temp_wear_string">highTemp</string>
     <string name="low_temp_wear_string">lowTemp</string>
-    <string name="weather_icon_array_string">weather_icon</string>
+    <string name="weather_icon_asset_string">weather_icon</string>
 
     <string name="time_stamp_string">time_stamp</string>
 

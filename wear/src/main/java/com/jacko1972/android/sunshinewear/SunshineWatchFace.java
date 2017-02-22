@@ -343,7 +343,7 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
                     break;
                 case TAP_TYPE_TAP:
                     // The user has completed the tap gesture.
-                    // TODO: Add code to handle the tap gesture.
+                    sendMessageForWeatherInfoUpdate();
                     Toast.makeText(getApplicationContext(), R.string.message, Toast.LENGTH_SHORT)
                             .show();
                     break;
@@ -408,6 +408,8 @@ public class SunshineWatchFace extends CanvasWatchFaceService {
              * Display Weather information, check data has been updated from listener service
              */
                 if (weatherIcon != null) {
+                    weatherIcon.setHeight(highBounds.height());
+                    weatherIcon.setWidth(highBounds.height());
                     canvas.drawBitmap(weatherIcon, bounds.centerX() - weatherIcon.getWidth() - 50, bounds.centerY() + dateBounds.height() + 15, null);
                     canvas.drawText(highTemp, bounds.centerX() - lowBounds.centerX(), bounds.centerY() + dateBounds.height() + 55, mHighPaint);
                     canvas.drawText(lowTemp, bounds.centerX() + 50, bounds.centerY() + dateBounds.height() + 55, mLowPaint);

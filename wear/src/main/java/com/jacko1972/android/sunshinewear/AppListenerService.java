@@ -69,6 +69,7 @@ public class AppListenerService extends WearableListenerService implements DataA
                 GoogleApiClient googleApiClient = new GoogleApiClient.Builder(context)
                         .addApi(Wearable.API)
                         .build();
+
                 ConnectionResult result = googleApiClient.blockingConnect(10000, TimeUnit.MILLISECONDS);
                 if (!result.isSuccess()) {
                     return null;
